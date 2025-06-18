@@ -16,7 +16,7 @@ function EditChannel() {
   useEffect(() => {
     async function fetchChannel() {
       try {
-        const res = await axios.get(`http://localhost:3000/api/channel?_id=${channelId}`);
+        const res = await axios.get(`https://you-tube-backend-by-p.onrender.com/api/channel?_id=${channelId}`);
         setChannelData(res.data[0]); // assuming it's an array
       } catch (error) {
         console.error("Error fetching channel:", error);
@@ -32,8 +32,8 @@ function EditChannel() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/api/channel/${channelId}`, channelData);
-      navigate(`/YourChannel/${channelData.Owner._id}`);
+      await axios.put(`https://you-tube-backend-by-p.onrender.com/api/channel/${channelId}`, channelData);
+      navigate(`/Channel/${channelData.Owner._id}`);
 
     } catch (error) {
       console.error("Error updating channel:", error);

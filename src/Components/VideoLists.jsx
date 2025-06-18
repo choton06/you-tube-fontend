@@ -16,15 +16,15 @@ function VideoLists({ selectedCategory = "All" }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data: videoData } = await axios.get("http://localhost:3000/api/Video");
+        const { data: videoData } = await axios.get("https://you-tube-backend-by-p.onrender.com/api/Video");
 
         if (Array.isArray(videoData)) {
           const uniqueChannelIds = [...new Set(videoData.map((v) => v.channelId?._id || v.channelId))];
           const uniqueUserIds = [...new Set(videoData.map((v) => v.Owner?._id || v.Owner))];
 
           const [channelRes, userRes] = await Promise.all([
-            Promise.all(uniqueChannelIds.map((id) => axios.get(`http://localhost:3000/api/channels/${id}`))),
-            Promise.all(uniqueUserIds.map((id) => axios.get(`http://localhost:3000/user/${id}`))),
+            Promise.all(uniqueChannelIds.map((id) => axios.get(`https://you-tube-backend-by-p.onrender.com/api/channels/${id}`))),
+            Promise.all(uniqueUserIds.map((id) => axios.get(`https://you-tube-backend-by-p.onrender.com/user/${id}`))),
           ]);
 
           const newChannelMap = {};

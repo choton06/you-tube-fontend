@@ -29,7 +29,7 @@ function SignUp() {
     if (Object.keys(validationErrors).length > 0) return;
 
     try {
-      const response = await fetch("http://localhost:3000/signUp", {
+      const response = await fetch("https://you-tube-backend-by-p.onrender.com/signUp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

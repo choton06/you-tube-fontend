@@ -8,18 +8,18 @@ function UploadVideo() {
   const [videoCategory, setVideoCategory] = useState("");
   const [videoDescription, setVideoDescription] = useState("");
 
-  const { channelId } = useParams(); // ✅ Correct param
+  const { channelId } = useParams(); //Correct param
   const navigate = useNavigate();
 
   async function handleUploadVideo(e) {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:3000/api/AddVideo/${channelId}`, {
+      const response = await fetch(`https://you-tube-backend-twts.onrender.com/api/AddVideo/${channelId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`, // ✅ if using auth
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`, // if using auth
         },
         body: JSON.stringify({
           title: videoTitle,

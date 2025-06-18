@@ -20,7 +20,7 @@ function Home() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/video/categories");
+        const res = await axios.get("https://you-tube-backend-by-p.onrender.com/api/video/categories");
         setCategories(["All", ...res.data]);
       } catch (err) {
         console.error("Error fetching categories:", err);

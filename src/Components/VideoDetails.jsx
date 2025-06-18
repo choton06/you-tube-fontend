@@ -23,13 +23,13 @@ const VideoDetails = () => {
   useEffect(() => {
     const fetchVideo = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/video?videoId=${videoId}`);
+        const res = await axios.get(`https://you-tube-backend-twts.onrender.com/api/video?videoId=${videoId}`);
         const videoData = res.data[0];
         setVideo(videoData);
         setLikeCount(videoData.likes?.length || 0);
         setUnlikeCount(videoData.unlikes?.length || 0);
 
-        const relatedRes = await axios.get(`http://localhost:3000/api/video/related/${videoId}`);
+        const relatedRes = await axios.get(`https://you-tube-backend-twts.onrender.com/api/video/related/${videoId}`);
         setRelatedVideos(relatedRes.data);
       } catch (error) {
         console.error("Error fetching video:", error);
@@ -41,7 +41,7 @@ const VideoDetails = () => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/comments/${videoId}`);
+        const res = await axios.get(`https://you-tube-backend-twts.onrender.com/comments/${videoId}`);
         setComments(res.data);
       } catch (error) {
         console.error("Error fetching comments:", error);
@@ -60,7 +60,7 @@ const VideoDetails = () => {
 
     if (!commentText.trim()) return;
     try {
-      const res = await axios.post("http://localhost:3000/postcomment", {
+      const res = await axios.post("https://you-tube-backend-twts.onrender.com/postcomment", {
         VideoId: videoId,
         text: commentText,
         userId: loggedInUser?._id,
@@ -80,7 +80,7 @@ const VideoDetails = () => {
     return;
   }
     const token = localStorage.getItem("accessToken");
-    const res = await fetch(`http://localhost:3000/api/${videoId}/like`, {
+    const res = await fetch(`https://you-tube-backend-twts.onrender.com/api/${videoId}/like`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -109,7 +109,7 @@ const VideoDetails = () => {
   }
 
     const token = localStorage.getItem("accessToken");
-    const res = await fetch(`http://localhost:3000/api/${videoId}/unlike`, {
+    const res = await fetch(`https://you-tube-backend-twts.onrender.com/api/${videoId}/unlike`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -131,7 +131,7 @@ const VideoDetails = () => {
 
   const handleEditComment = async (commentId) => {
     try {
-      await axios.put(`http://localhost:3000/editcomment/${commentId}`, { text: editText });
+      await axios.put(`https://you-tube-backend-twts.onrender.com/editcomment/${commentId}`, { text: editText });
       setComments((prev) =>
         prev.map((c) => (c._id === commentId ? { ...c, text: editText } : c))
       );
@@ -144,7 +144,7 @@ const VideoDetails = () => {
 
   const handleDeleteComment = async (commentId) => {
     try {
-      await axios.delete(`http://localhost:3000/comments/${commentId}`);
+      await axios.delete(`https://you-tube-backend-twts.onrender.com/comments/${commentId}`);
       setComments((prev) => prev.filter((c) => c._id !== commentId));
     } catch (err) {
       console.error("Error deleting comment:", err);

@@ -24,7 +24,7 @@ function LogIn() {
     if (newErrors.email || newErrors.password) return;
 
     try {
-      const response = await fetch("http://localhost:3000/LogIn", {
+      const response = await fetch("https://you-tube-backend-by-p.onrender.com/LogIn", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ Email: UserEmail, Password: UserPassWord }),
@@ -38,7 +38,7 @@ function LogIn() {
 
       localStorage.setItem("accessToken", result.accessToken);
 
-      const userRes = await fetch("http://localhost:3000/user/me", {
+      const userRes = await fetch("https://you-tube-backend-by-p.onrender.com/user/me", {
         headers: { Authorization: `Bearer ${result.accessToken}` },
       });
 

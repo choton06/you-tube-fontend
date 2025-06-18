@@ -15,7 +15,7 @@ function Channel() {
   useEffect(() => {
     const fetchChannel = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/channel?Owner=${Owner}`);
+        const res = await fetch(`https://you-tube-backend-by-p.onrender.com/api/channel?Owner=${Owner}`);
         const data = await res.json();
         if (!res.ok) throw new Error(data.message || "Channel fetch failed");
         setChannels(data);
@@ -31,7 +31,7 @@ function Channel() {
       try {
         if (channels.length > 0) {
           const channelIds = channels.map((c) => c._id).join(",");
-          const res = await fetch(`http://localhost:3000/api/channelvideo?channelId=${channelIds}`);
+          const res = await fetch(`https://you-tube-backend-by-p.onrender.com/api/channelvideo?channelId=${channelIds}`);
           const videos = await res.json();
           if (!res.ok) throw new Error(videos.message || "Video fetch failed");
           setChannelVideos(videos);
@@ -50,7 +50,7 @@ function Channel() {
     if (!confirmDelete) return;
 
     try {
-      const res = await fetch(`http://localhost:3000/api/video/${videoId}`, {
+      const res = await fetch(`https://you-tube-backend-by-p.onrender.com/api/video/${videoId}`, {
         method: "DELETE",
       });
       const data = await res.json();

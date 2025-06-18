@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function EditVideo() {
-  const { id: videoId } = useParams(); // ✅ clean destructuring
+  const { id: videoId } = useParams(); //  clean destructuring
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -16,11 +16,11 @@ function EditVideo() {
 
   const [loading, setLoading] = useState(true);
 
-  // ✅ Fetch existing video details
+  //  Fetch existing video details
   useEffect(() => {
     const fetchVideo = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/Editvideo/${videoId}`);
+        const res = await axios.get(`https://you-tube-backend-by-p.onrender.com/api/Editvideo/${videoId}`);
         setFormData(res.data);
         setLoading(false);
       } catch (err) {
@@ -31,7 +31,7 @@ function EditVideo() {
     fetchVideo();
   }, [videoId]);
 
-  // ✅ Handle form field changes
+  //  Handle form field changes
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -39,12 +39,12 @@ function EditVideo() {
     }));
   };
 
-  // ✅ Submit updated video
+  //  Submit updated video
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/api/UpdateVideo/${videoId}`, formData);
-      navigate(`/YourChannel/${formData.Owner}`);
+      await axios.put(`https://you-tube-backend-by-p.onrender.com/api/UpdateVideo/${videoId}`, formData);
+      navigate(`/Channel/${formData.Owner}`);
     } catch (err) {
       console.error("Error updating video:", err.message);
     }

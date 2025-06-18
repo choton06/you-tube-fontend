@@ -17,7 +17,7 @@ function CreateChannel() {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:3000/api/AddChannel/${params.id}`,
+        `https://you-tube-backend-by-p.onrender.com/api/AddChannel/${params.id}`,
         {
           method: "POST",
           headers: {
@@ -33,7 +33,7 @@ function CreateChannel() {
 
       const result = await response.json();
       if (result) {
-        navigate(`/YourChannel/${userId}`);
+        navigate(`/Channel/${userId}`);
       }
     } catch (error) {
       alert("Network error. Please try again later.");

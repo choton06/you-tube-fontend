@@ -30,7 +30,6 @@ const appRoute = createBrowserRouter([
       { path: "/logIn", element: <LogIn /> },
       { path: "/video/:videoId", element: <VideoDetails /> },
       { path: "/Channel/:id", element: <Channel /> },
-      // { path: "/userinfo", element: <UserDetails /> },
       { path: "/createchannel/:id", element: <CreateChannel /> },
       { path: "/uploadVideo/:channelId", element: <UploadVideo /> },
       { path: "/editchannel/:channelId", element: <EditChannel /> },
