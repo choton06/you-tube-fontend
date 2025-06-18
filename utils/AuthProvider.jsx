@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
       }
 
       try {
-        const res = await fetch("http://localhost:3000/user/me", {
+        const res = await fetch("https://you-tube-backend-by-p.onrender.com/user/me", {
           headers: {
             Authorization: `Bearer ${token}`, // ✅ Bearer instead of JWT
           },
