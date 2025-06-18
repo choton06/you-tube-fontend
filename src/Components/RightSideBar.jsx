@@ -4,7 +4,7 @@ import UserContext from "../../utils/UserContext.js";
 
 function RightSideBar({ isOpen, onClose }) {
   const { loggedInUser, setUserDetails } = useContext(UserContext);
-  const sidebarRef = useRef(); // ✅ always called
+  const sidebarRef = useRef(); //  always called
 
   useEffect(() => {
     if (!isOpen) return;
@@ -19,9 +19,9 @@ function RightSideBar({ isOpen, onClose }) {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen, onClose]); // ✅ always called
+  }, [isOpen, onClose]); //  always called
 
-  // ✅ Now safe to return early AFTER all hooks
+  //  Now safe to return early AFTER all hooks
   if (!isOpen || !loggedInUser) return null;
 
   const user = loggedInUser;

@@ -15,7 +15,7 @@ function UploadVideo() {
     e.preventDefault();
 
     try {
-      const response = await fetch(`https://you-tube-backend-twts.onrender.com/api/AddVideo/${channelId}`, {
+      const response = await fetch(`https://you-tube-backend-by-p.onrender.com/api/AddVideo/${channelId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
