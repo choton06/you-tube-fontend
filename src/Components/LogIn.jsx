@@ -98,7 +98,7 @@ function LogIn() {
               onChange={(e) => setUserPassWord(e.target.value)}
             />
             <FontAwesomeIcon
-              icon={showPassword ? faEyeSlash : faEye}
+              icon={!showPassword ?  faEyeSlash : faEye }
               className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500 cursor-pointer"
               onClick={() => setShowPassword((prev) => !prev)}
             />

@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 const VideoDetails = () => {
   const { videoId } = useParams();
-  const { isLeftSidebarOpen } = useOutletContext(); // ✅ Get sidebar state
+  const { isLeftSidebarOpen } = useOutletContext(); // Get sidebar state
   const { loggedInUser } = useContext(UserContext);
 
   const [video, setVideo] = useState(null);
@@ -153,7 +153,7 @@ const VideoDetails = () => {
 
   if (!video) return <div className="text-center py-20">Loading...</div>;
 
-  const marginClass = isLeftSidebarOpen ? "ml-60" : "ml-20";
+  const marginClass = isLeftSidebarOpen ? "ml-60" : "ml-2 lg:ml-20 ";
 
   return (
     <div className={`pt-[72px] px-4 transition-all duration-300 ${marginClass} flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto`}>
@@ -276,11 +276,11 @@ const VideoDetails = () => {
       </div>
 
       {/* Related Videos */}
-      <div className="w-full lg:w-1/3 space-y-4">
-        <h2 className="text-lg font-semibold pt-14">Related Videos</h2>
+      <div className="w-full lg:w-1/3 space-y-4 mb-16">
+        <h2 className="text-lg font-semibold ">Related Videos</h2>
         {relatedVideos.map((v) => (
           <Link key={v._id} to={`/video/${v._id}`} className="flex gap-3 hover:bg-gray-50 p-2 rounded">
-            <div className="w-32 h-20 overflow-hidden rounded bg-gray-300">
+            <div className="w-80 h-20 overflow-hidden rounded bg-gray-300">
               <img src={v.thumbnailUrl} alt={v.title} className="w-full h-full object-cover" />
             </div>
             <div className="flex flex-col">
